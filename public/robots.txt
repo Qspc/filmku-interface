@@ -1,0 +1,21 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+
+
+logo2
+- film
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<i class="fa fa-film"></i>
+<i style="font-size:24px" class="fa">&#xf008;</i>
+
+- kalender
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<i class='fas fa-calendar-alt'></i>
+<i style='font-size:24px' class='fas'>&#xf073;</i>
+
+- bendera
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<i class="material-icons">ondemand_video</i>
+<i class="material-icons">&#xe63a;</i>
+
