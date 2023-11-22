@@ -6,6 +6,7 @@ import Recent from '../components/HomePage/Recent';
 import Team from '../components/HomePage/Team';
 
 const Home = () => {
+  const haha = 10;
   return (
     <div className="overflow-hidden bg-background">
       <Hero />
