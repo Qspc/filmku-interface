@@ -1,28 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 * {
   scroll-behavior: smooth;
 }
 
-/* html {
-  overflow: hidden;
-} */
+@layer base {
+  body {
+    @apply font-poppins;
+  }
+}
 
-body,
-input,
-textarea,
-button {
-  font-family: 'Poppins', sans-serif;
-}
-#btn-dl {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-}
-p,
-a {
-  font-family: 'Open Sans', sans-serif;
-}
 .cardImage {
   width: 90px;
   height: 120px;
@@ -31,23 +20,17 @@ a {
   width: 180px;
   height: 240px;
 }
+.ql-editor {
+  color: black;
+}
 ion-icon {
   color: #fff;
 }
-/* #about,
-#team {
-  height: 640px;
-} */
 #recent {
   height: 480px;
 }
 #feature {
   height: 360px;
-}
-
-select,
-option {
-  font-family: 'Open Sans', sans-serif;
 }
 
 @media screen and (min-width: 376px) {

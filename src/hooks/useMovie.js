@@ -1,16 +1,32 @@
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { getMovieById, getMovies, createMovie } from "api/apiService";
 
-const useMovie = (movieId) => {
+export const useGetById = (id) => {
   return useQuery({
-    queryKey: ["movies", movieId],
-    queryFn: () =>
-      axios
-        .get(
-          `https://api.themoviedb.org/3/movie/${movieId}?api_key=42d3f8d886180928e42d0cabfb523b63`
-        )
-        .then((res) => res.data),
+    queryKey: ["film", id],
+    queryFn: async () => {
+      const res = await getMovieById(id);
+      return res;
+    },
   });
 };
 
-export default useMovie;
+export const useMovies = (params) => {
+  return useQuery({
+    queryKey: ["movies", params],
+    queryFn: () => getMovies(params),
+    keepPreviousData: true,
+  });
+};
+
+export const useCreateMovie = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: createMovie,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["movies"]);
+    },
+  });
+};

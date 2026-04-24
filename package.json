@@ -25,8 +25,8 @@
     "tsparticles-slim": "^2.10.1"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && craco start",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && craco build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

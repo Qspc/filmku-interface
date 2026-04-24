@@ -17,8 +17,8 @@ function App() {
         <Route path="film" element={<Film />} />
         <Route path="film/:id" element={<DetailFilm />} />
         <Route path="form" element={<Form />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="movies/:movieId" element={<Movie />} />
+        {/* <Route path="movies" element={<Movies />} /> */}
+        {/* <Route path="movies/:movieId" element={<Movie />} /> */}
       </Routes>
     </Router>
   );

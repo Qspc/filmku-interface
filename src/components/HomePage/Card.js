@@ -10,7 +10,7 @@ const Card = ({ content }) => {
         opacity: 1,
         transition: { duration: 0.4, ease: "easeIn" },
       }}
-      className="bg-surface flex flex-col items-center justify-center p-8 mb-6 rounded-lg "
+      className="flex flex-col items-center justify-center p-8 mb-6 rounded-lg bg-surface min-w-64 "
     >
       <div className="relative w-24 h-24 mb-6 overflow-hidden">
         <img
@@ -21,38 +21,18 @@ const Card = ({ content }) => {
       </div>
       <p className="mb-6 font-bold text-white md:text-base">{content.name}</p>
       <div className="flex">
-        <div className="relative flex items-center justify-center rounded-full text-blue-700">
-          <a
-            href={content.socialMedia.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/instagram.svg"
-              alt="instagram"
-              style={{ height: "24px" }}
-            />
+        <div className="relative flex items-center justify-center text-blue-700 rounded-full">
+          <a href={content.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
+            <img src="/instagram.svg" alt="instagram" style={{ height: "24px" }} />
           </a>
         </div>
-        <div className="flex items-center justify-center mx-8 rounded-full text-blue-700">
-          <a
-            href={content.socialMedia.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/linkedin.svg"
-              alt="linkedin"
-              style={{ height: "24px" }}
-            />
+        <div className="flex items-center justify-center mx-8 text-blue-700 rounded-full">
+          <a href={content.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">
+            <img src="/linkedin.svg" alt="linkedin" style={{ height: "24px" }} />
           </a>
         </div>
-        <div className="flex items-center justify-center rounded-full text-blue-700">
-          <a
-            href={content.socialMedia.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <div className="flex items-center justify-center text-blue-700 rounded-full">
+          <a href={content.socialMedia.github} target="_blank" rel="noopener noreferrer">
             <img src="/github.svg" alt="github" style={{ height: "24px" }} />
           </a>
         </div>
