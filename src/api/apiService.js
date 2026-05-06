@@ -20,12 +20,20 @@ export const createMovie = async ({ body, apiKey }) => {
   return res.data;
 };
 
-export const updateMovie = async (id, body) => {
-  const res = await apiClient.put(`/movies/${id}`, body);
+export const updateMovie = async ({ id, body, apiKey }) => {
+  const res = await apiClient.put(`/movies/${id}`, body, {
+    headers: {
+      "x-api-key": apiKey,
+    },
+  });
   return res.data;
 };
 
-export const deleteMovie = async (id) => {
-  const res = await apiClient.delete(`/movies/${id}`);
+export const deleteMovie = async (id, apiKey) => {
+  const res = await apiClient.delete(`/movies/${id}`, {
+    headers: {
+      "x-api-key": apiKey,
+    },
+  });
   return res.data;
 };

@@ -2,17 +2,21 @@ import { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getAllByDisplayValue } from "@testing-library/react";
 import { getMoviePoster } from "api/tmdbService";
 import LoadingEffect from "components/style/LoadingEffect";
-import { useCreateMovie } from "hooks/useMovie";
+import { useCreateMovie, useDeleteMovie, useGetById, useUpdateMovie } from "hooks/useMovie";
 
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 // import CKEditor from '@ckeditor/ckeditor5-react';
 
-const Form = () => {
+const UpdateForm = () => {
   const navigate = useNavigate();
+  const filmId = useLocation().pathname.split("/")[2];
+
+  const { data: film, isLoading, isError } = useGetById(filmId);
+
   const [form, setForm] = useState({
     title: "",
     year: "",
@@ -22,8 +26,6 @@ const Form = () => {
     description: "",
     image: "",
   });
-  const [loadImage, setLoadImage] = useState(false);
-  const [apiKey, setApiKey] = useState("");
   const allForm = [
     {
       label: "Title",
@@ -41,11 +43,23 @@ const Form = () => {
       value: form.rank,
     },
   ];
+
+  const [loadImage, setLoadImage] = useState(false);
+  const [apiKey, setApiKey] = useState("");
   const [poster, setPoster] = useState(""); //show image poster
   const [idMovie, setIdMovie] = useState(); //id movie from moviedb
   const [text, setText] = useState(""); //text editor for description
+  useEffect(() => {
+    if (film) {
+      setForm({
+        ...film,
+      });
+      setText(film.description);
+    }
+  }, [film]);
 
-  const { mutateAsync, isLoading } = useCreateMovie();
+  const { mutateAsync } = useUpdateMovie();
+  const { mutateAsync: deleteMovies } = useDeleteMovie();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,14 +84,28 @@ const Form = () => {
     };
 
     mutateAsync(
-      { body: payload, apiKey },
+      { id: filmId, body: payload, apiKey },
       {
         onSuccess: () => {
           navigate("/film");
         },
         onError: (err) => {
           console.error(err);
-          alert("Gagal menambahkan film");
+          alert("Gagal mengupdate film");
+        },
+      },
+    );
+  };
+  const handleDelete = async () => {
+    deleteMovies(
+      { id: filmId, apiKey },
+      {
+        onSuccess: () => {
+          navigate("/film");
+        },
+        onError: (err) => {
+          console.error(err);
+          alert("Gagal menghapus film");
         },
       },
     );
@@ -104,9 +132,9 @@ const Form = () => {
     <section className="mx-auto bg-background">
       <div className="px-6 py-20 mx-auto text-white md:w-1/2">
         <div className="flex justify-between">
-          <h1 className="mb-8 text-2xl font-semibold">Tambah Film</h1>
+          <h1 className="mb-8 text-2xl font-semibold">Update Film</h1>
           <Link
-            to={`/film`}
+            to={`/film/${filmId}`}
             className="text-sm font-medium transition-all duration-300 text-primary"
           >
             ← Kembali
@@ -229,22 +257,32 @@ const Form = () => {
           </div>
 
           {/* SUBMIT */}
-          <button
-            onClick={handleSubmit}
-            disabled={isLoading}
-            className="
+          <div className="flex gap-4">
+            <button
+              onClick={handleDelete}
+              // disabled={isLoading}
+              className="
+        w-full py-3 mt-4 text-sm font-medium text-white rounded-full bg-secondary transition-all duration-300 hover:bg-secondary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-bg-white active:scale-95"
+            >
+              {isLoading ? "Menghapus..." : "Hapus Film"}
+            </button>
+            <button
+              onClick={handleSubmit}
+              disabled={isLoading}
+              className="
         w-full py-3 mt-4 text-sm font-medium text-white rounded-full 
         bg-primary transition-all duration-300
         hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/30
         active:scale-95
       "
-          >
-            {isLoading ? "Menyimpan..." : "Simpan Film"}
-          </button>
+            >
+              {isLoading ? "Mengupdate..." : "Update Film"}
+            </button>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default Form;
+export default UpdateForm;

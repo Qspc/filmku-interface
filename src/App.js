@@ -7,6 +7,7 @@ import Form from "pages/Form";
 import DetailFilm from "pages/DetailFilm";
 import Movies from "pages/Movies";
 import Movie from "pages/Movie";
+import UpdateForm from "pages/Update";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="film" element={<Film />} />
         <Route path="film/:id" element={<DetailFilm />} />
+        <Route path="film/:id/form" element={<UpdateForm />} />
         <Route path="form" element={<Form />} />
         {/* <Route path="movies" element={<Movies />} /> */}
         {/* <Route path="movies/:movieId" element={<Movie />} /> */}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getMovieById, getMovies, createMovie } from "api/apiService";
+import { getMovieById, getMovies, createMovie, deleteMovie, updateMovie } from "api/apiService";
 
 export const useGetById = (id) => {
   return useQuery({
@@ -25,6 +25,28 @@ export const useCreateMovie = () => {
 
   return useMutation({
     mutationFn: createMovie,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["movies"]);
+    },
+  });
+};
+
+export const useUpdateMovie = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: updateMovie,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["movies"]);
+    },
+  });
+};
+
+export const useDeleteMovie = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: deleteMovie,
     onSuccess: () => {
       queryClient.invalidateQueries(["movies"]);
     },

@@ -21,7 +21,7 @@ const DetailFilm = () => {
         ) : (
           <div className="max-w-5xl mx-auto">
             {/* title */}
-            <div className="mb-6 text-center md:text-left head">
+            <div className="flex flex-col py-10 text-center md:text-left">
               <h1 className="text-3xl font-semibold text-white capitalize md:text-3xl">
                 {films.title}{" "}
               </h1>

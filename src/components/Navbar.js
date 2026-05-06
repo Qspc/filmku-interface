@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-30 px-12 shadow-xl bg-surface">
-      <div className="relative flex flex-col px-2 py-3 mx-auto cursor-pointer max-w-7xl md:flex-row md:justify-between">
+      <div className="relative flex flex-col px-2 py-3 mx-auto max-w-7xl md:flex-row md:justify-between">
         {/* logo kiri */}
         <Link
           id="logo"

@@ -11,14 +11,15 @@ import UsePagination from "../components/ListMovies/UsePagination";
 import { useMovies } from "hooks/useMovie";
 import Pagination from "components/ListMovies/Auth";
 import LoadingEffect from "components/style/LoadingEffect";
+import FilterMovies from "../components/ListMovies/Filter";
 
 const Film = () => {
-  const [filteredResult, setFilteredResult] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(5);
-  const [open, isOpen] = useState(false);
-  const [openCountry, isOpenCountry] = useState(false);
-  const [openYear, isOpenYear] = useState(false);
+
+  const [genre, setGenre] = useState("");
+  const [country, setCountry] = useState("");
+  const [page, setPage] = useState(1);
 
   const {
     data: allMovies,
@@ -27,6 +28,8 @@ const Film = () => {
   } = useMovies({
     page: currentPage,
     limit: limit,
+    genre,
+    country,
   });
   const meta = allMovies?.meta;
   const { hasPrev, hasNext, totalPage } = useMemo(() => {
@@ -58,27 +61,19 @@ const Film = () => {
     }
   };
 
-  const handleClose = () => {
-    isOpen(false);
-    isOpenCountry(false);
-    isOpenYear(false);
-  };
-
   return (
     <div className="bg-background">
       {/* filter */}
-      <Filter
-        filteredResult={filteredResult}
-        setFilteredResult={setFilteredResult}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        open={open}
-        isOpen={isOpen}
-        openCountry={openCountry}
-        openYear={openYear}
-        isOpenCountry={isOpenCountry}
-        isOpenYear={isOpenYear}
-      />
+      <div className="flex items-center justify-center py-10">
+        <FilterMovies
+          page={page}
+          setPage={setPage}
+          country={country}
+          setCountry={setCountry}
+          setGenre={setGenre}
+          genre={genre}
+        />
+      </div>
 
       {/* daftar film  */}
       <div className="min-h-screen">

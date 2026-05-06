@@ -7,15 +7,15 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
-    },
-    colors: {
-      background: "#0F172A", //item
-      surface: "#1E293B", //item abu
-      primary: "#1d4ed8", //biru -  button, logo
-      secondary: "#b91c1c", //merah
-      white: "#fff",
-      grey: "#e2e8f0",
-      gold: "#F3B742",
+      colors: {
+        background: "#0F172A", //item
+        surface: "#1E293B", //item abu
+        primary: "#1d4ed8", //biru -  button, logo
+        secondary: "#b91c1c", //merah
+        white: "#fff",
+        grey: "#e2e8f0",
+        gold: "#F3B742",
+      },
     },
   },
   variants: {

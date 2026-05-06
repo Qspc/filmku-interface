@@ -39,7 +39,7 @@ const Fitur = () => {
                 style={{ fontSize: "4rem", color: "rgba(26, 86, 219, 1)" }}
               ></ion-icon>
             </div>
-            <div className="text-2xl font-semibold text-center text-grey ">Periode Beragam</div>
+            <div className="text-2xl font-semibold text-center text-grey ">Berbagai Periode</div>
           </motion.div>
           <motion.div
             initial={{ x: "50%", opacity: 0 }}

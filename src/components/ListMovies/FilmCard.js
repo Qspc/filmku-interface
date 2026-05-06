@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const FilmCard = (props) => {
   const { id, rank, title, year, image, description } = props;
   return (
-    <div className="flex gap-1">
+    <div key={id} className="flex gap-1">
       {/* number ranking */}
       <div className="flex flex-col w-20 text-center rounded-lg max-h-20 bg-surface">
         <p className="my-auto text-2xl font-semibold">{rank}.</p>
