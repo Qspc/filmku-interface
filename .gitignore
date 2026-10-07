@@ -1,3 +1,36 @@
-node_modules
-build
+# Dependencies (Library & Paket)
+node_modules/
+.pnpm-store/
+
+# Output Build & Produksi
+dist/
+build/
+out/
+.next/
+
+# Environment Variables & Sensitif (Kunci API/Sandi)
+.env.*.local
+*.pem
+
+# Log & Debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# File Sistem Operasi
+.DS_Store
+Thumbs.db
+
+# Editor & IDE (Pengaturan Pribadi)
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.swp
+
+# Cache
+.cache/
+.eslintcache
 config.bat
